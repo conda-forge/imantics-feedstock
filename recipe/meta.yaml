@@ -1,20 +1,20 @@
 {% set name = "imantics" %}
-{% set version = "0.1.11" %}
+{% set version = "0.1.12" %}
 
 package:
-  name: "{{ name|lower }}"
-  version: "{{ version }}"
+  name: {{ name|lower }}
+  version: {{ version }}
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: cfe751841ee21962daad95003cbe86332b4a28300ae1026944e17d8ecc949dbc
+  sha256: 2f806b158821a58a5b35014aecca4f7f853445bc304f847cef04dd0d8e05bd90
   patches:
-    - change_cv2_and_opencv-python_to_py-opencv.patch
+    - opencv_setuppy.patch
 
-build: 
+build:
   noarch: python
   number: 0
-  script: "{{ PYTHON }} -m pip install . --no-deps -vv"
+  script: {{ PYTHON }} -m pip install . --no-deps -vv
 
 requirements:
   host:
@@ -32,13 +32,13 @@ test:
     - imantics
 
 about:
-  home: "https://github.com/jsbroks/imantics"
-  license: "MIT"
-  license_family: "MIT"
-  license_file: "LICENSE"
+  home: https://github.com/jsbroks/imantics
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
   summary: "Python package for managing image annotations"
-  doc_url: "https://pypi.org/project/imantics/"
-  dev_url: "https://github.com/jsbroks/imantics"
+  doc_url: https://pypi.org/project/imantics/
+  dev_url: https://github.com/jsbroks/imantics
 
 extra:
   recipe-maintainers:
